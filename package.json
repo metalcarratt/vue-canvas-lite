@@ -1,0 +1,36 @@
+{
+  "name": "vue-canvas-lite",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/vue-canvas-lite.umd.cjs",
+  "module": "./dist/vue-canvas-lite.js",
+  "types": "./dist/vue-canvas-lite.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/vue-canvas-lite.js",
+      "require": "./dist/vue-canvas-lie.umd.cjs"
+    },
+    "./style.css": "./dist/style.css"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && vue-tsc --emitDeclarationOnly",
+    "types": "vue-tsc",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.4.21"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.12",
+    "@vitejs/plugin-vue": "^5.0.4",
+    "typescript": "^5.2.2",
+    "vite": "^5.2.0",
+    "vite-plugin-dts": "^3.9.1",
+    "vue-tsc": "^2.0.6"
+  }
+}
