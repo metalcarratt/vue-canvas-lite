@@ -1,9 +1,44 @@
-# Vue 3 + TypeScript + Vite
+# Vue Canvas Lite
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Usage:
 
-## Recommended Setup
+```vue
+<template>
+    <Canvas id="myCanvas" :render="renderFunction" :refresh="refresh"></Canvas>
+</template>
 
-- [VS Code](https://code.visualstudio.com/) + [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (previously Volar) and disable Vetur
+<script setup>
+import { Canvas, type RenderCanvasFn } from "vue-canvas-lite";
 
-- Use [vue-tsc](https://github.com/vuejs/language-tools/tree/master/packages/tsc) for performing the same type checking from the command line, or for generating d.ts files for SFCs.
+const renderFunction: RenderCanvasFn = (canvas) => {
+    // render instructions
+}
+
+const refresh = false;
+</script>
+```
+
+## Drawing images
+```ts
+import { createImage, RenderCanvasFn } from "vue-canvas-lite";
+
+const myImage = createImage('my_image.png'); // where my_image.png is in the root of the 'public' folder
+
+const renderFunction: RenderCanvasFn = (canvas) => {
+    canvas.drawImage({
+        img: myImage
+    });
+}
+```
+
+Align image to side or corner:
+```ts
+canvas.drawImage({
+    img: myImage,
+    from: From.TOP_RIGHT,
+    x: 100
+})
+```
+Draws image 100px right of top right corner
+
+And more...
